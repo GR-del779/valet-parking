@@ -1,0 +1,152 @@
+{
+ "autoname": "format:VLT-{YYYY}-{#####}",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "token_number",
+  "status",
+  "customer_phone",
+  "customer_name",
+  "section_vehicle",
+  "vehicle_number",
+  "vehicle_make",
+  "vehicle_color",
+  "parking_location",
+  "section_timestamps",
+  "drop_off_time",
+  "parked_time",
+  "retrieval_requested_time",
+  "on_the_way_time",
+  "delivered_time",
+  "section_attendant",
+  "assigned_attendant",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "token_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Token Number",
+   "read_only": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Awaiting Parking\nParked\nRetrieval Requested\nOn The Way\nDelivered",
+   "default": "Awaiting Parking",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_phone",
+   "fieldtype": "Data",
+   "label": "Customer WhatsApp Number",
+   "hidden": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "section_vehicle",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Details"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Data",
+   "label": "Vehicle Number",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "vehicle_make",
+   "fieldtype": "Data",
+   "label": "Vehicle Make/Model"
+  },
+  {
+   "fieldname": "vehicle_color",
+   "fieldtype": "Data",
+   "label": "Vehicle Color"
+  },
+  {
+   "fieldname": "parking_location",
+   "fieldtype": "Data",
+   "label": "Parking Spot"
+  },
+  {
+   "fieldname": "section_timestamps",
+   "fieldtype": "Section Break",
+   "label": "Timestamps",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "drop_off_time",
+   "fieldtype": "Datetime",
+   "label": "Drop-off Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "parked_time",
+   "fieldtype": "Datetime",
+   "label": "Parked Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "retrieval_requested_time",
+   "fieldtype": "Datetime",
+   "label": "Retrieval Requested Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "on_the_way_time",
+   "fieldtype": "Datetime",
+   "label": "On The Way Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivered_time",
+   "fieldtype": "Datetime",
+   "label": "Delivered Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_attendant",
+   "fieldtype": "Section Break",
+   "label": "Attendant Info",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "assigned_attendant",
+   "fieldtype": "Link",
+   "label": "Assigned Attendant",
+   "options": "User"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "module": "Valet Parking",
+ "name": "Parking Ticket",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "title_field": "token_number",
+ "track_changes": 1
+}

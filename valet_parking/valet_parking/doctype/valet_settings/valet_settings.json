@@ -1,0 +1,94 @@
+{
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "issingle": 1,
+ "field_order": [
+  "whatsapp_phone_number_id",
+  "whatsapp_access_token",
+  "whatsapp_business_account_id",
+  "whatsapp_webhook_verify_token",
+  "column_break_1",
+  "whatsapp_number",
+  "valet_location_name",
+  "section_messages",
+  "msg_parked",
+  "msg_on_the_way",
+  "msg_delivered"
+ ],
+ "fields": [
+  {
+   "fieldname": "whatsapp_phone_number_id",
+   "fieldtype": "Data",
+   "label": "Phone Number ID",
+   "description": "From Meta Developer Console \u2192 WhatsApp \u2192 API Setup"
+  },
+  {
+   "fieldname": "whatsapp_access_token",
+   "fieldtype": "Password",
+   "label": "Access Token"
+  },
+  {
+   "fieldname": "whatsapp_business_account_id",
+   "fieldtype": "Data",
+   "label": "Business Account ID"
+  },
+  {
+   "fieldname": "whatsapp_webhook_verify_token",
+   "fieldtype": "Data",
+   "label": "Webhook Verify Token",
+   "description": "A secret string you choose"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "whatsapp_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp Business Number",
+   "description": "E.g. +919876543210"
+  },
+  {
+   "fieldname": "valet_location_name",
+   "fieldtype": "Data",
+   "label": "Venue Name",
+   "default": "Our Venue"
+  },
+  {
+   "fieldname": "section_messages",
+   "fieldtype": "Section Break",
+   "label": "Notification Messages"
+  },
+  {
+   "fieldname": "msg_parked",
+   "fieldtype": "Small Text",
+   "label": "Parked Confirmation Message",
+   "default": "Hi! Your vehicle has been safely parked at {venue}. Token: *{token}*.\n\nWhen ready to leave, tap the button below \ud83d\udc47"
+  },
+  {
+   "fieldname": "msg_on_the_way",
+   "fieldtype": "Small Text",
+   "label": "On The Way Message",
+   "default": "Great news! \ud83d\ude97 Your vehicle is on its way. Please head to the pickup point."
+  },
+  {
+   "fieldname": "msg_delivered",
+   "fieldtype": "Small Text",
+   "label": "Delivered Message",
+   "default": "Your vehicle has been handed over. Thank you for using our valet service! \ud83d\ude4f"
+  }
+ ],
+ "module": "Valet Parking",
+ "name": "Valet Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ]
+}
