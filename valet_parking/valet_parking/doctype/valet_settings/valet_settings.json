@@ -11,6 +11,7 @@
   "column_break_1",
   "whatsapp_number",
   "valet_location_name",
+  "use_frappe_whatsapp",
   "section_messages",
   "msg_parked",
   "msg_on_the_way",
@@ -54,6 +55,13 @@
    "fieldtype": "Data",
    "label": "Venue Name",
    "default": "Our Venue"
+  },
+  {
+   "fieldname": "use_frappe_whatsapp",
+   "fieldtype": "Check",
+   "label": "Use frappe_whatsapp",
+   "default": "0",
+   "description": "Route WhatsApp messages through frappe_whatsapp instead of direct Meta API calls"
   },
   {
    "fieldname": "section_messages",

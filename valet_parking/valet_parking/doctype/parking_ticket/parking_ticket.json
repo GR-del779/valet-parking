@@ -4,6 +4,7 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "key_tag",
   "token_number",
   "status",
   "customer_phone",
@@ -24,6 +25,15 @@
   "notes"
  ],
  "fields": [
+  {
+   "fieldname": "key_tag",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Key Tag",
+   "options": "Key Tag",
+   "bold": 1,
+   "description": "Physical key tag assigned to this ticket"
+  },
   {
    "fieldname": "token_number",
    "fieldtype": "Data",

@@ -1,0 +1,85 @@
+{
+ "autoname": "field:tag_number",
+ "creation": "2024-01-01 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tag_number",
+  "status",
+  "column_break_1",
+  "current_ticket",
+  "section_qr",
+  "qr_deeplink",
+  "qr_image"
+ ],
+ "fields": [
+  {
+   "fieldname": "tag_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tag Number",
+   "reqd": 1,
+   "unique": 1,
+   "bold": 1,
+   "description": "E.g. KT-001"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Available\nIn Use",
+   "default": "Available",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_ticket",
+   "fieldtype": "Link",
+   "label": "Current Ticket",
+   "options": "Parking Ticket",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "The parking ticket currently using this tag"
+  },
+  {
+   "fieldname": "section_qr",
+   "fieldtype": "Section Break",
+   "label": "QR Code",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "qr_deeplink",
+   "fieldtype": "Data",
+   "label": "QR Deeplink URL",
+   "read_only": 1,
+   "description": "The WhatsApp deeplink encoded in the QR code"
+  },
+  {
+   "fieldname": "qr_image",
+   "fieldtype": "Attach Image",
+   "label": "QR Code Image",
+   "description": "Printable QR code for this tag"
+  }
+ ],
+ "module": "Valet Parking",
+ "name": "Key Tag",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  }
+ ],
+ "sort_field": "tag_number",
+ "sort_order": "ASC",
+ "title_field": "tag_number",
+ "track_changes": 1
+}

@@ -229,7 +229,7 @@ function renderCard(t){
     <div class="card-top"><span class="token">${t.token_number}</span><span class="ctime">${relTime(t.drop_off_time)}</span></div>
     <div style="display:flex;justify-content:space-between;align-items:center">
       ${badge(t.status)}
-      <div class="pills">${t.vehicle_number?`<span class="pill">🚘 ${t.vehicle_number}</span>`:''}${t.parking_location?`<span class="pill">📍 ${t.parking_location}</span>`:''}</div>
+      <div class="pills">${t.key_tag?`<span class="pill">🏷️ ${t.key_tag}</span>`:''}${t.vehicle_number?`<span class="pill">🚘 ${t.vehicle_number}</span>`:''}${t.parking_location?`<span class="pill">📍 ${t.parking_location}</span>`:''}</div>
     </div>
     ${nxt?`<div class="card-actions"><button class="act-btn ${nxt.cls}" data-action="${nxt.status}" data-name="${t.name}">${nxt.icon} ${nxt.label}</button></div>`:''}
   </div>`;
@@ -250,6 +250,10 @@ function closeModal(){$('modal').classList.remove('open');document.body.style.ov
 function renderModal(t){
   $('m-token').textContent=t.token_number;$('m-badge').innerHTML=badge(t.status);
   $('m-body').innerHTML=`
+    <div class="msec"><h3>Ticket Info</h3>
+      <div class="mrow"><span class="mlbl">Key Tag</span><span class="mval">${t.key_tag||'—'}</span></div>
+      <div class="mrow"><span class="mlbl">Token</span><span class="mval">${t.token_number||'—'}</span></div>
+    </div>
     <div class="msec"><h3>Customer</h3>
       <div class="mrow"><span class="mlbl">Phone</span><span class="mval">${t.customer_phone||'—'}</span></div>
       <div class="mrow"><span class="mlbl">Name</span><span class="mval">${t.customer_name||'—'}</span></div>

@@ -1,5 +1,5 @@
 import frappe
-from frappe.utils import now_datetime, get_datetime
+from frappe.utils import get_datetime
 
 
 @frappe.whitelist()
@@ -28,7 +28,7 @@ def get_tickets(status=None, search=None, limit=50):
         filters["status"] = ["not in", ["Delivered"]]
 
     fields = [
-        "name", "token_number", "status",
+        "name", "key_tag", "token_number", "status",
         "customer_phone", "customer_name",
         "vehicle_number", "vehicle_make", "vehicle_color",
         "parking_location", "drop_off_time", "parked_time",
@@ -105,10 +105,6 @@ def update_ticket_status(ticket_name, new_status,
     ticket.save(ignore_permissions=True)
     frappe.db.commit()
 
-    # Explicitly trigger WhatsApp notification
-    from valet_parking.valet_parking.whatsapp.outbound import _send
-    _send(ticket, new_status.lower().replace(" ", "_"))
-
     return {"success": True, "status": ticket.status}
 
 
@@ -156,3 +152,14 @@ def get_daily_summary(date=None):
         "active": total - delivered,
         "avg_turnaround_minutes": avg_minutes
     }
+
+
+@frappe.whitelist()
+def get_available_tags():
+    """Return list of Key Tags with status Available."""
+    return frappe.db.get_all(
+        "Key Tag",
+        filters={"status": "Available"},
+        fields=["name", "tag_number"],
+        order_by="tag_number asc"
+    )

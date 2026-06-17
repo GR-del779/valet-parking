@@ -8,8 +8,35 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+# frappe_whatsapp and frappe_whatsapp_chatbot are both required:
+#   frappe_whatsapp  — WhatsApp Message doctype & outbound sending
+#   frappe_whatsapp_chatbot — routes inbound messages; calls our keyword scripts
+required_apps = ["frappe_whatsapp", "frappe_whatsapp_chatbot"]
 
+# Fixtures — exported to valet_parking/fixtures/ and imported on bench migrate
+# NOTE: WhatsApp Keyword Reply uses autoname format:{title}-{#####} so it cannot
+# be imported via fixtures. The two valet keyword replies ("Valet PARK" and
+# "Valet Get My Car") were seeded directly via bench console.
+# See: valet_parking/fixtures/whatsapp_keyword_reply.json for reference.
+
+doc_events = {
+    "Parking Ticket": {
+        "on_update": "valet_parking.valet_parking.whatsapp.outbound.on_ticket_update",
+    },
+    # WhatsApp Message inbound is now handled by frappe_whatsapp_chatbot.
+    # Valet logic is invoked via chatbot Keyword Reply scripts:
+    #   - "PARK" keyword  → valet_parking.valet_parking.whatsapp.inbound.handle_park_keyword
+    #   - button reply    → valet_parking.valet_parking.whatsapp.inbound.handle_retrieval_button
+}
+
+exempt_from_csrf_checks = [
+    "valet_parking.valet_parking.api.api.update_ticket_status",
+    "valet_parking.valet_parking.api.api.get_tickets",
+    "valet_parking.valet_parking.api.api.get_ticket",
+    "valet_parking.valet_parking.api.api.get_dashboard_counts",
+    "valet_parking.valet_parking.api.api.get_daily_summary",
+    "valet_parking.valet_parking.api.api.get_available_tags",
+]
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
 # 	{
@@ -136,14 +163,7 @@ app_license = "mit"
 # Document Events
 # ---------------
 # Hook on document methods and events
-
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+# (Business logic doc_events live in valet_parking/valet_parking/hooks.py)
 
 # Scheduled Tasks
 # ---------------
@@ -246,4 +266,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

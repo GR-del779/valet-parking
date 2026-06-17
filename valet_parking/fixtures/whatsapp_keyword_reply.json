@@ -1,0 +1,24 @@
+[
+  {
+    "doctype": "WhatsApp Keyword Reply",
+    "title": "Valet PARK",
+    "enabled": 1,
+    "priority": 10,
+    "keywords": "PARK",
+    "match_type": "Starts With",
+    "case_sensitive": 0,
+    "response_type": "Script",
+    "script": "valet_parking.valet_parking.whatsapp.inbound.handle_park_keyword"
+  },
+  {
+    "doctype": "WhatsApp Keyword Reply",
+    "title": "Valet Get My Car",
+    "enabled": 1,
+    "priority": 10,
+    "keywords": "get_my_car",
+    "match_type": "Exact",
+    "case_sensitive": 0,
+    "response_type": "Script",
+    "script": "valet_parking.valet_parking.whatsapp.inbound.handle_retrieval_button"
+  }
+]
